@@ -1,5 +1,6 @@
 package history;
 
+import java.util.Scanner;
 import java.util.Stack;
 
 public class Browser {
@@ -8,7 +9,7 @@ public class Browser {
 	
 	// Check History is Empty or not
 	public static Boolean isBrowsingHistoryEmpty() {
-	    // Add CODE BELOW
+	    
 		if(history.size()==0) {
 			return true;
 		}
@@ -17,29 +18,34 @@ public class Browser {
 		}
 	}
 	
+//	Most Recently Visited Site
 	public static String mostRecentlyVisitedSite() {
-		// TODO Auto-generated method stub
+		
 		if(history.isEmpty()== true) {
 			return "History is Empty";
 		}
 		else {
 			return history.peek();
 		}
-
 	}
+	
+//	Push Element
+	public static void addSiteToHistory(String url) {
+		history.push(url);
+	}
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
+
 		System.out.println("History is Empty: "+isBrowsingHistoryEmpty());
 		
 //		push history in a stack
 		
-		history.push("google.com");
-		history.push("gmail.com");
-		history.push("facebook.com");
-		history.push("youtube.com");
-		history.push("javatpoint.com");
-		history.push("stackoverflow.com");
+//		history.push("google.com");
+//		history.push("gmail.com");
+//		history.push("facebook.com");
+//		history.push("youtube.com");
+//		history.push("javatpoint.com");
+//		history.push("stackoverflow.com");
 		
 //		print history
 //		System.out.println("History of Browser is: "+history);
@@ -47,7 +53,18 @@ public class Browser {
 //		Again check the history
 //		System.out.println("History is Empty: "+isBrowsingHistoryEmpty());
 		
-		System.out.println("Most Recent call is: "+mostRecentlyVisitedSite());
+//		System.out.println("Most Recent call is: "+mostRecentlyVisitedSite());
+		
+		
+		Scanner s = new Scanner(System.in);
+	    System.out.print("How much Sites you Want to add: ");
+	    int site = s.nextInt();
+	    for(int i = 0; i < site; i++) {
+	    	System.out.print("Enter "+(i+1)+" site name: ");
+	    	String url = s.next();
+	    	addSiteToHistory(url);
+	    }
+		System.out.println("History of Browser is: "+history);
 
 	}
 
